@@ -43,48 +43,7 @@
       </div>
     </div>
     <v-dialog v-model="dialog">
-      <v-card>
-        <div class="dialogHead d-flex justify-space-between align-center">
-          <v-card-title> افزایش اعتبار </v-card-title>
-          <button
-            class="
-              ml-3
-              closeBtn
-              rounded-circle
-              d-flex
-              justify-center
-              align-center
-              pa-1
-            "
-          >
-            <img src="/icons/x.svg" alt="" width="20" />
-          </button>
-        </div>
-        <v-card-text class="py-7 px-4 inputDiv">
-          <input
-            type="number"
-            v-model="increase"
-            class="grey lighten-3 rounded-lg pa-3 increaseInput"
-            placeholder="مبلغ درخواستی خود را وارد کنید."
-          />
-        </v-card-text>
-        <v-card-actions>
-          <button
-            class="
-              addBtn
-              white--text
-              light-blue
-              lighten-2
-              rounded-lg
-              text-center
-              py-2
-            "
-            @click="add"
-          >
-            افزایش
-          </button>
-        </v-card-actions>
-      </v-card>
+      <Modal @closeModal="dialog = false" />
     </v-dialog>
   </div>
 </template>
@@ -95,8 +54,7 @@ export default {
     return {
       myWallet: "",
       myBlocked: "",
-      dialog: true,
-      increase: null,
+      dialog: false,
     };
   },
   mounted() {
@@ -113,12 +71,6 @@ export default {
 
       this.myWallet = str.toString().replace(/(\d)(?=(\d{3})+$)/g, "$1,");
       this.myBlocked = str2.toString().replace(/(\d)(?=(\d{3})+$)/g, "$1,");
-    },
-  },
-  methods: {
-    add() {
-      this.$store.commit("addWallet", this.increase);
-      console.log(this.$store.state.wallet);
     },
   },
 };

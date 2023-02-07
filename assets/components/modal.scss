@@ -1,0 +1,21 @@
+.dialogHead {
+  border-bottom: 1px solid rgb(218, 218, 218);
+  .closeBtn {
+    border: 1px solid gray;
+    height: fit-content;
+    width: fit-content;
+  }
+}
+.inputDiv {
+  border-bottom: 1px solid rgb(218, 218, 218);
+  .increaseInput {
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.addBtn {
+  width: 100%;
+  font-weight: bold;
+}
